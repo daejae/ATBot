@@ -30,3 +30,7 @@ build/
 
 # ENV
 .env
+
+# sqlite
+sqlite.db
+sqlite.db-journal
