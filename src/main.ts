@@ -1,10 +1,13 @@
-// // // 프로그램 진입점.
-// // (async () => {
-// //   setInterval(()=>{
-// //     console.log(123123);
-// //   }, 1000)
-// // })();
+import { buyStock, getAccount } from "./api/index.js";
 
-// import prisma from "./prismaClient.js";
+(async () => {
+  const account = await getAccount();
+  console.log(account);
+});
 
-// console.log(prisma);
+
+(async () => {
+  console.log(await buyStock());
+})();
+
+
