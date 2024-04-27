@@ -36,6 +36,10 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "axios": "^1.6.8",
+    "prisma": "^5.13.0",
+    "sqlite3": "^5.1.7",
     "tslib": "~2.6"
   },
   "volta": {
