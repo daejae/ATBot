@@ -9,7 +9,6 @@ interface Config {
 
   // 종목
   stockName :string;
-  stockMarket : string;
   stockBuyQty : string;
 }
 
@@ -20,7 +19,6 @@ const config: Config = {
   appSecret: process.env.APP_SECRET,
 
   stockName : process.env.STOCK_NAME,
-  stockMarket : process.env.SOCKET_MARKET,
   stockBuyQty : process.env.STOCK_BUY_QTY,
 };
 
