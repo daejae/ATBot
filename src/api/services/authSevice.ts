@@ -31,9 +31,9 @@ export const getToken = async() => {
   const currentDate = new Date((new Date).getTime() -(1 * 60 * 60 * 1000)); // 현재 시간에서 1시간 전
 
   if(currenToken && currenToken.access_token_token_expired > currentDate ){
-    console.log("기존토큰");
     return `${currenToken.token_type} ${currenToken.access_token}`;
   }
+  console.log(new Date());
   console.log("새로운 토큰");
 
   const newToken = await createToken();

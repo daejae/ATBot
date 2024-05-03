@@ -32,14 +32,16 @@
     "test": "jest --coverage",
     "prettier": "prettier --config .prettierrc --write .",
     "test:watch": "jest --watch",
-    "db:format" : "prisma format",
-    "db:migrate" : "prisma migrate dev"
+    "db:format": "prisma format",
+    "db:migrate": "prisma migrate dev"
   },
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@date-io/dayjs": "^3.0.0",
     "@prisma/client": "^5.13.0",
     "axios": "^1.6.8",
+    "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",
     "prisma": "^5.13.0",
     "sqlite3": "^5.1.7",

@@ -5,6 +5,7 @@ import { getToken } from './services/authSevice.js';
 const apiClient = axios.create({
   baseURL: config.url,
   maxBodyLength: Infinity,
+  timeout : 5000,
   headers: {
     'Content-Type': 'application/json',
     appkey: config.appKey,

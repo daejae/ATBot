@@ -15,8 +15,16 @@ datasource db {
 
 model Token {
   id                         Int      @id @default(1)
-  updatedAt                  DateTime @default(now())
+  updatedAt                  DateTime @updatedAt
   access_token               String
   token_type                 String
   access_token_token_expired DateTime
+}
+
+model order {
+  id              Int      @id @default(autoincrement())
+  createAtNewYork DateTime
+  ticker          String
+  orderQuantity   Int
+  diffRate        Float
 }

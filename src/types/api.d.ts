@@ -47,3 +47,37 @@ export interface AccountResponse {
   msg_cd: string;
   msg1: string;
 }
+
+// stock Service
+
+export interface StockBuyResponse {
+  rt_cd: string;    // 응답 코드
+  msg_cd: string;   // 메시지 코드
+  msg1: string;     // 상세 메시지
+  output: {
+    KRX_FWDG_ORD_ORGNO: string;  // 주문 기관 번호
+    ODNO: string;               // 주문 번호
+    ORD_TMD: string;            // 주문 시간
+  };
+}
+
+
+
+export interface StockPriceResponse {
+  output: {
+    rsym: string;  // 심볼
+    zdiv: string;  // 나누기 값 (문자열로 표현된 숫자)
+    base: string;  // 기준 가격
+    pvol: string;  // 이전 볼륨
+    last: string;  // 최종 가격
+    sign: string;  // 신호 또는 변화의 표시 (문자열로 표현된 숫자)
+    diff: string;  // 가격 차이
+    rate: string;  // 비율 (퍼센트로 표시)
+    tvol: string;  // 오늘의 볼륨
+    tamt: string;  // 오늘의 총액
+    ordy: string;  // 주문 가능 여부
+  };
+  rt_cd: string;    // 응답 코드
+  msg_cd: string;   // 메시지 코드
+  msg1: string;     // 메시지 설명
+}
