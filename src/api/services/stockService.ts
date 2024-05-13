@@ -14,7 +14,7 @@ export const orderStock = async (data: {
     OVRS_EXCG_CD: data.orderExchangeCode,
     PDNO: data.ticker,
     ORD_QTY: data.quantity,
-    OVRS_ORD_UNPR: data.orderPrice, // 시장가
+    OVRS_ORD_UNPR: data.orderPrice.replace(/(\.\d\d)\d+/, "$1"), // 시장가
     ORD_SVR_DVSN_CD: '0',
     ORD_DVSN: '00', // 지정가
   };

@@ -1,6 +1,7 @@
 import { getCurrentStockPrice, orderStock } from './api/index.js';
 import prisma from './prismaClient.js';
 import OrderRepositorie from './repositories/orderRepositorie.js';
+import TokenRepositorie from './repositories/tokenRepositorie.js';
 import { getTodayLastBuyRate } from './service.js';
 import { getDate, isOpenMarket } from './utils/localtime.js';
 
@@ -14,10 +15,16 @@ const targetStock: {
     ticker: 'TQQQ',
     orderExchangeCode: 'NASD',
     exchangeCode: 'NAS',
-    quantity: '1',
+    quantity: '2',
   },
   {
     ticker: 'SOXL',
+    orderExchangeCode: 'AMEX',
+    exchangeCode: 'AMS',
+    quantity: '2',
+  },
+  {
+    ticker: 'SCHD',
     orderExchangeCode: 'AMEX',
     exchangeCode: 'AMS',
     quantity: '1',
@@ -33,6 +40,15 @@ const main = async () => {
         ticker: info.ticker,
         exchangeCode: info.exchangeCode,
       });
+
+      if(currentStockPrice.msg_cd == "EGW00123"){
+        // token 만료
+        console.log("토큰 만료, 기존 토큰 삭제처리");
+        const tokenRepositorie = new TokenRepositorie(prisma);
+        const deleteResult = await tokenRepositorie.deleteToken();
+        console.log(deleteResult);
+        continue;
+      }
 
       if(currentStockPrice.rt_cd != "0") {
         console.log("현재가 조회 실패 / ", currentStockPrice );
@@ -91,5 +107,18 @@ setInterval(async () => {
   }
 }, 10000);
 
+// import puppeteer from 'puppeteer';
 // (async () => {
+//   const browser = await puppeteer.launch();
+//   const page = await browser.newPage();
+
+//   await page.goto(`https://www.isnasdaqopen.com/`);
+
+
+//   // /html/body/main/div/p[1]
+//     // page.$eval() 함수를 사용하여 지정된 셀렉터의 요소의 HTML을 반환합니다.
+//     const htmlContent = await page.$eval('body > main > div > p:nth-child(1)', element => element.innerHTML);
+//     console.log(htmlContent);
+
+//   await browser.close();
 // })();

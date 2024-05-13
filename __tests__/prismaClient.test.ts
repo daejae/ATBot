@@ -10,6 +10,6 @@ describe("Prisma Clien 테스트", ()=>{
   });
 
   test("case 1", ()=>{
-
+    expect("").toEqual("")
   })
 })

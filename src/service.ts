@@ -8,12 +8,10 @@ export const getTodayLastBuyRate = async (data : {
 
   const orderRepositorie = new OrderRepositorie(prisma);
   const orders = await orderRepositorie.getTodayOrders(data);
-
   if (orders.length > 0) {
-    const maxorder = orders.reduce((max, order) => {
-      return order.diffRate > max.diffRate ? order : max;
-    }, orders[0]);
-
+    const maxorder = orders.reduce((prev, current) => {
+      return current.diffRate < prev.diffRate ? current : prev;
+    });
     maxRate = maxorder.diffRate;
   }
 

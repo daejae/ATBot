@@ -20,4 +20,12 @@ export default class TokenRepositorie {
       update : data
     })
   }
+
+  async deleteToken() {
+    return await this.prisma.token.delete({
+      where : {
+        id : 1
+      }
+    })
+  }
 }
