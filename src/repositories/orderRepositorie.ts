@@ -28,6 +28,7 @@ export default class OrderRepositorie {
     ticker: string;
     orderQuantity : number;
     diffRate : number;
+    price : number;
   }) {
     return await this.prisma.order.create({
       data: data,

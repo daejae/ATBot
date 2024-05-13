@@ -87,6 +87,7 @@ const main = async () => {
         diffRate: parseFloat(currentStockPrice.output.rate),
         orderQuantity: +info.quantity,
         ticker: info.ticker,
+        price : parseFloat(currentStockPrice.output.last)
       });
 
       console.log(orderResult);
