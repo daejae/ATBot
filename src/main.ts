@@ -1,7 +1,6 @@
 import { getCurrentStockPrice, orderStock } from './api/index.js';
 import prisma from './prismaClient.js';
 import OrderRepositorie from './repositories/orderRepositorie.js';
-import TokenRepositorie from './repositories/tokenRepositorie.js';
 import { getTodayLastBuyRate } from './service.js';
 import { getDate, isOpenMarket } from './utils/localtime.js';
 
@@ -40,15 +39,6 @@ const main = async () => {
         ticker: info.ticker,
         exchangeCode: info.exchangeCode,
       });
-
-      if(currentStockPrice.msg_cd == "EGW00123"){
-        // token 만료
-        console.log("토큰 만료, 기존 토큰 삭제처리");
-        const tokenRepositorie = new TokenRepositorie(prisma);
-        const deleteResult = await tokenRepositorie.deleteToken();
-        console.log(deleteResult);
-        continue;
-      }
 
       if(currentStockPrice.rt_cd != "0") {
         console.log("현재가 조회 실패 / ", currentStockPrice );
