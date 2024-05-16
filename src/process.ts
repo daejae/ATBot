@@ -15,11 +15,13 @@ const process = async (
   while (true) {
     try {
       // 개장여부 확인
-      if (isOpenMarket() == false) return;
-
-      for (const stock of data) {
-        await processItem(stock, eachItemDelay);
+      if (isOpenMarket() == false) {
+        await delay(loopDelay);
+        continue;
       }
+
+      for (const stock of data) await processItem(stock, eachItemDelay);
+
       await delay(loopDelay);
     } catch (error) {
       console.log(error);
