@@ -1,7 +1,6 @@
 {
-  "name": "node-typescript-boilerplate",
-  "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "name": "atbot",
+  "version": "0.1.0",
   "type": "module",
   "engines": {
     "node": ">= 20.9 < 21"
@@ -35,8 +34,6 @@
     "db:format": "prisma format",
     "db:migrate": "prisma migrate dev"
   },
-  "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
-  "license": "Apache-2.0",
   "dependencies": {
     "@date-io/dayjs": "^3.0.0",
     "@prisma/client": "^5.13.0",
