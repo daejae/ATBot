@@ -20,7 +20,10 @@ const process = async (
         continue;
       }
 
-      for (const stock of data) await processItem(stock, eachItemDelay);
+      for (const stock of data) {
+        await processItem(stock);
+        await delay(eachItemDelay);
+      }
 
       await delay(loopDelay);
     } catch (error) {
@@ -29,7 +32,7 @@ const process = async (
   }
 };
 
-const processItem = async (stock: Stock, eachItemDelay: number) => {
+const processItem = async (stock: Stock) => {
   const currentStockPrice = await getCurrentStockPrice({
     ticker: stock.ticker,
     exchangeCode: stock.exchangeCode,
@@ -76,7 +79,5 @@ const processItem = async (stock: Stock, eachItemDelay: number) => {
   });
 
   console.log(orderResult);
-
-  await delay(eachItemDelay);
 };
 export default process;
