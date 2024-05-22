@@ -55,11 +55,13 @@ const processItem = async (stock: Stock) => {
 
   if (currentRateCeil >= orderRateCeil) return;
 
+  // rate diff * stock quentity
+  const orderQuantity = (+stock.quantity) * (orderRateCeil - currentRateCeil);
   const orderResult = await orderStock({
     orderPrice: currentStockPrice.output.last,
     ticker: stock.ticker,
     orderExchangeCode: stock.orderExchangeCode,
-    quantity: stock.quantity,
+    quantity: orderQuantity.toString(),
   });
 
   // 주문 실패
@@ -73,7 +75,7 @@ const processItem = async (stock: Stock) => {
   await orderrepositorie.createOrder({
     createAtNewYork: getDate().newYorkTime.format(),
     diffRate: parseFloat(currentStockPrice.output.rate),
-    orderQuantity: +stock.quantity,
+    orderQuantity: orderQuantity,
     ticker: stock.ticker,
     price: parseFloat(currentStockPrice.output.last),
   });
