@@ -23,12 +23,12 @@ const targetStock: Stock[] = [
     exchangeCode: 'AMS',
     quantity: '1',
   },
-  // {
-  //   ticker: 'BNKU',
-  //   orderExchangeCode: 'AMEX',
-  //   exchangeCode: 'AMS',
-  //   quantity: '1',
-  // },
+  {
+    ticker: 'O',
+    orderExchangeCode: 'NYSE',
+    exchangeCode: 'NYS',
+    quantity: '1',
+  },
 ];
 
 process(targetStock, 1000, 10000);
